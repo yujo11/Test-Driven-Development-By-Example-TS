@@ -9,6 +9,7 @@
  */
 
 export {};
+
 class Dollar {
   amount: number;
 
@@ -17,16 +18,18 @@ class Dollar {
   }
 
   times(multiplier: number) {
-    this.amount = this.amount * multiplier;
+    return new Dollar(this.amount * multiplier);
   }
 }
 
 describe("test", () => {
   it("testMultiplication", () => {
     const five: Dollar = new Dollar(5);
+    let product: Dollar = five.times(2);
 
-    five.times(2);
+    expect(product.amount).toBe(10);
 
-    expect(five.amount).toBe(10);
+    product = five.times(3);
+    expect(product.amount).toBe(15);
   });
 });
